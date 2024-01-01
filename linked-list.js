@@ -11,7 +11,7 @@ class LinkedList {
     }
 
     append(value) {
-        if (this.head == null) {
+        if (!this.head) {
             return this.head = new Node(value);
         }
 
@@ -25,11 +25,22 @@ class LinkedList {
             node = node.nextNode;
         }
     }
+
+    prepend(value) {
+        if (!this.head) {
+            return this.head = new Node(value);
+        }
+
+        let node = new Node(value);
+        node.nextNode = this.head;
+        this.head = node;
+    }
 }
 
 let list = new LinkedList();
 list.append(3);
 list.append(6);
-list.append(12);
+list.prepend(1);
+list.prepend(0);
 
 console.log(list);
