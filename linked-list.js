@@ -116,6 +116,23 @@ class LinkedList {
 
         return false;
     }
+
+    find(value) {
+        if (!this.contains(value)) {
+            return null;
+        }
+
+        let index = 0;
+        let node = this.HEAD;
+        while (node) {
+            if (node.value === value) {
+                return index;
+            }
+
+            index++;
+            node = node.nextNode;
+        }
+    }
 }
 
 let list = new LinkedList();
@@ -125,5 +142,4 @@ list.prepend(1);
 list.prepend(0);
 list.append(7);
 
-console.log(list.contains());
-console.log(list.contains(7));
+console.log(list.find(66));
