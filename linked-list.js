@@ -80,6 +80,25 @@ class LinkedList {
             node = node.nextNode;
         }
     }
+
+    pop() {
+        let node = this.HEAD;
+        if (this.size() <= 1) {
+            this.HEAD = null;
+            return node;
+        }
+
+        let poppedNode = null;
+        while (node) {
+            if (node.nextNode.nextNode == null) {
+                poppedNode = node.nextNode;
+                node.nextNode = null;
+                return poppedNode;
+            }
+
+            node = node.nextNode;
+        }
+    }
 }
 
 let list = new LinkedList();
@@ -89,4 +108,6 @@ list.prepend(1);
 list.prepend(0);
 list.append(7);
 
+console.log(list.pop());
+console.log(list.pop());
 console.log(list.at(0));
