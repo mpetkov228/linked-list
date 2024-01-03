@@ -99,6 +99,23 @@ class LinkedList {
             node = node.nextNode;
         }
     }
+
+    contains(value) {
+        if (this.size() == 0) {
+            return false;
+        }
+
+        let node = this.HEAD;
+        while (node) {
+            if (node.value === value) {
+                return true;
+            }
+
+            node = node.nextNode;
+        }
+
+        return false;
+    }
 }
 
 let list = new LinkedList();
@@ -108,6 +125,5 @@ list.prepend(1);
 list.prepend(0);
 list.append(7);
 
-console.log(list.pop());
-console.log(list.pop());
-console.log(list.at(0));
+console.log(list.contains());
+console.log(list.contains(7));
