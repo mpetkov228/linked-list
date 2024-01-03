@@ -62,6 +62,24 @@ class LinkedList {
             node = node.nextNode;
         }
     }
+
+    at(index) {
+        let length = this.size();
+        if (length - 1 < index || index < 0) {
+            return new Error('Index out of bounds!');
+        }
+
+        let count = 0;
+        let node = this.HEAD;
+        while (node) {
+            if (count == index) {
+                return node;
+            }
+
+            count++;
+            node = node.nextNode;
+        }
+    }
 }
 
 let list = new LinkedList();
@@ -71,4 +89,4 @@ list.prepend(1);
 list.prepend(0);
 list.append(7);
 
-console.log(list.tail());
+console.log(list.at(0));
