@@ -133,6 +133,26 @@ class LinkedList {
             node = node.nextNode;
         }
     }
+
+    toString() {
+        if (this.size() == 0) {
+            return 'null';
+        }
+
+        let result = '';
+        let node = this.HEAD;
+        while (node) {
+            if (node.nextNode == null) {
+                result += `( ${node.value} ) -> null`;
+                break;
+            }
+            result += `( ${node.value} ) -> `;
+
+            node = node.nextNode;
+        }
+
+        return result;
+    }
 }
 
 let list = new LinkedList();
@@ -142,4 +162,4 @@ list.prepend(1);
 list.prepend(0);
 list.append(7);
 
-console.log(list.find(66));
+console.log(list.toString());
