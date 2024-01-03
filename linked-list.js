@@ -6,45 +6,61 @@ class Node {
 }
 
 class LinkedList {
-    constructor(head = null) {
-        this.head = head;
+    constructor(HEAD = null) {
+        this.HEAD = HEAD;
     }
 
     append(value) {
-        if (!this.head) {
-            return this.head = new Node(value);
+        if (!this.HEAD) {
+            return this.HEAD = new Node(value);
         }
 
-        let node = this.head;
-        while (node) {
-            if (!node.nextNode) {
-                node.nextNode = new Node(value);
-                break;
-            }
-
-            node = node.nextNode;
+        let tl = this.tail();
+        if (tl == null) {
+            return this.HEAD.nextNode = new Node(value);
         }
+
+        tl.nextNode = new Node(value);
     }
 
     prepend(value) {
-        if (!this.head) {
-            return this.head = new Node(value);
+        if (!this.HEAD) {
+            return this.HEAD = new Node(value);
         }
 
         let node = new Node(value);
-        node.nextNode = this.head;
-        this.head = node;
+        node.nextNode = this.HEAD;
+        this.HEAD = node;
     }
 
     size() {
         let count = 0;
-        let node = this.head;
+        let node = this.HEAD;
         while (node) {
             count++;
             node = node.nextNode;
         }
 
         return count;
+    }
+
+    head() {
+        return this.HEAD;
+    }
+
+    tail() {
+        if (this.HEAD.nextNode == null) {
+            return null;
+        }
+
+        let node = this.HEAD;
+        while (node) {
+            if (node.nextNode == null) {
+                return node;
+            }
+
+            node = node.nextNode;
+        }
     }
 }
 
@@ -53,10 +69,6 @@ list.append(3);
 list.append(6);
 list.prepend(1);
 list.prepend(0);
+list.append(7);
 
-console.log(list.size());
-
-let list2 = new LinkedList();
-list2.prepend(4);
-
-console.log(list2.size());
+console.log(list.tail());
